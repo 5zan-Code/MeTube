@@ -1,2 +1,1 @@
-# MeTube
-Javascript backend using MERN stack. Replicating Youtube backend
+# Welcome to Project V1 on video streaming website.
