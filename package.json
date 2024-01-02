@@ -14,6 +14,7 @@
   "author": "Faizan Ansari",
   "license": "ISC",
   "devDependencies": {
+    "colors": "^1.4.0",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.1"
   },
