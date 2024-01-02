@@ -3,6 +3,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 
 
+
 const app = express();
 
 
@@ -17,9 +18,13 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
-app.get('/', (req,res) => {
-    res.send('MeTube')
-    console.log("MeTube")
-})
+
+// Routes Import
+
+import userRouter from './routes/user.routes.js'
+
+// Routes Declare
+
+app.use("/api/v1/users", userRouter)
 
 export default app
