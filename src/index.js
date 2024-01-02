@@ -1,27 +1,21 @@
-import mongoose from "mongoose";
-import express, { application } from "express";
-import {DB_NAME} from "./constants"
-
-const app = express();
-
+import dotenv from "dotenv"
+import app from './app.js'
+import connectDB from "./db/index.js"
+import colors from 'colors'
 
 
+dotenv.config()
+connectDB
+.then( () => {
+    app.on ("error", (error)=> {
+        console.log("ERROR :", error)
+        throw error
+    })
 
-/*
-;(async ()=>{
-    try {
-        mongoose.connect(`${process.env.MONGO-URL}/${DB_Name}`)
-        app.on("error", (error) => {
-            console.log("Error: ", error)
-            throw error
-        })
-
-        app.listen(process.env.PORT, ()=>{
-            console.log(`Server is start listening at http:localhost:${process.env.PORT}`)
-        })
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-})()
-*/
+    app.listen(process.env.PORT || 5000, ()=> {
+        console.log(`-> Server start spinning at http://localhost:${process.env.PORT}`.bgCyan.black )
+    })
+})
+.catch(err => {
+    console.log("MONGO DB connection failed !!!", err)
+})
